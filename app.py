@@ -51,5 +51,17 @@ start_button = st.button('Run')
 
 if start_button:
     st.write(f'Running the experient of {number_of_trials} trials.')
+    st.session_state['experiment_no'] += 1 #FinalStep5 and line 56 to the end.
     mean = toss_coin(number_of_trials) #This line code is to get the True value when clicking the bottom.tosscoinasstartbuttom.txt
+    st.session_state['df_experiment_results'] = pd.concat([
+        st.session_state['df_experiment_results'],
+        pd.DataFrame(data=[[st.session_state['experiment_no'],
+                            number_of_trials,
+                            mean]],
+                     columns=['no', 'iterations', 'mean'])
+        ],
+        axis=0)
+    st.session_state['df_experiment_results'] = \
+        st.session_state['df_experiment_results'].reset_index(drop=True)
 
+st.write(st.session_state['df_experiment_results'])
