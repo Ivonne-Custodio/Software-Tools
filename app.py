@@ -15,9 +15,9 @@
 import scipy.stats
 import streamlit as st
 import time
-
+#The title
 st.header('Tossing a Coin')
-
+#The canvas chart
 chart = st.line_chart([0.5])
 
 def toss_coin(n):
@@ -37,11 +37,11 @@ def toss_coin(n):
         time.sleep(0.05)
 
     return mean
-
+#The number of trials buttom
 number_of_trials = st.slider('Number of trials?', 1, 1000, 10)
 start_button = st.button('Run')
 
 if start_button:
     st.write(f'Running the experient of {number_of_trials} trials.')
-
+    mean = toss_coin(number_of_trials) #This line code is to get the True value when clicking the bottom.tosscoinasstartbuttom.txt
 
