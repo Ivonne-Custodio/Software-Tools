@@ -11,10 +11,18 @@
 #    st.write(f'Running the experiment of {number_of_trials} trials.')
 
 #st.write('It is not a functional application yet. Under construction.')
-
+import pandas as pd #I just added this pandas and line 19 to 25 at step 4 (after creating the True buttom)
 import scipy.stats
 import streamlit as st
 import time
+
+# these are stateful variables which are preserved as Streamlin reruns this script
+if 'experiment_no' not in st.session_state:
+    st.session_state['experiment_no'] = 0
+
+if 'df_experiment_results' not in st.session_state:
+    st.session_state['df_experiment_results'] = pd.DataFrame(columns=['no', 'iterations', 'mean'])
+
 #The title
 st.header('Tossing a Coin')
 #The canvas chart
